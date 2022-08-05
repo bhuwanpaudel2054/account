@@ -1,0 +1,115 @@
+{% load static %}
+
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Account</title>
+    <meta name="description" content="A simple HTML5 Template for new projects.">
+    <meta name="author" content="SitePoint">
+
+    <meta property="og:title" content="A Basic HTML5 Template">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
+    <meta property="og:description" content="A simple HTML5 Template for new projects.">
+    <meta property="og:image" content="image.png">
+
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    
+
+    <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
+
+</head>
+
+<body>
+    <!-- your content here... -->
+    <div id="header">
+        <div class="wrapper">
+            <div id="brand_logo">
+                <a >Aarawan</a>
+            </div>
+            <div id="nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a>
+                    <div class="uparrowdiv">
+                        <ul>
+                            <li><a href="">the program</a></li>
+                            <li><a href="">company</a></li>
+                            <li><a href="">staff</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#">Portfolio</a>
+                    <div class="uparrowdiv">
+                        <ul>
+                            <li><a href="#">Pop Art</a></li>
+                            <li><a href="#">Drawings</a></li>
+                            <li><a href="#">Paintings</a></li>
+                            <li><a href="#">GFX</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                {% if request.user.is_authenticated %}
+                <li><a href="#"> {{user.username}} </a></li>
+                <li><a href="{% url 'logout' %}"> Logout </a></li>
+                {% else %}
+                <li><a href="{% url 'index' %}">Login</a></li>
+                <li><a href="{% url 'sign_up' %}">Signup</a></li>
+                {% endif %}
+            </ul>
+        </div><!-- end of nav -->
+        </div><!-- end of wrapper -->
+    </div><!-- end of header -->
+    <main class="full-height flex align-items-center">
+        {% block content %}
+        {% endblock content %}
+       
+    </main>
+
+    <!--FONT AWESOME-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--GOOGLE FONTS-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
+</head>
+<body>
+<footer>
+<div class="footer">
+<div class="row">
+<a href="#"><i class="fa fa-facebook"></i></a>
+<a href="#"><i class="fa fa-instagram"></i></a>
+<a href="#"><i class="fa fa-youtube"></i></a>
+<a href="#"><i class="fa fa-twitter"></i></a>
+</div>
+
+<div class="row">
+<ul>
+<li><a href="#">Contact us</a></li>
+<li><a href="#">Our Services</a></li>
+<li><a href="#">Privacy Policy</a></li>
+<li><a href="#">Terms & Conditions</a></li>
+<li><a href="#">Career</a></li>
+</ul>
+</div>
+
+<div class="row">
+INFERNO Copyright © 2021 Inferno - All rights reserved || Designed By: Mahesh 
+</div>
+</div>
+</footer>
+
+
+    <!-- <script src="js/scripts.js"></script> -->
+</body>
+
+</html>

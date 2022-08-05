@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="grid">
+
+  <form autocomplete="off" action="" method="POST" class="form login signup">
+    {% csrf_token %}
+
+    <div class="form__field">
+      </svg><span class="hidden">Email</span></label>
+      <input placeholder="Email " id="signup__email" type="text" name="email" class="form__input" required>
+    </div>
+
+    <div class="form__field">
+      </svg><span class="hidden">Username</span></label>
+      <input placeholder="User Name" id="login__username" type="text" name="username" class="form__input" required>
+    </div>
+    <div class="form__field">
+      <input id="login__password" type="password" name="password1" class="form__input" placeholder="Password" required>
+    </div>
+    <div class="form__field">
+      <input id="login__password" type="password" name="password2" class="form__input" placeholder="Re Enter Password"
+        required>
+    </div>
+    {% for field in registration_form %}
+    <span>
+      {% for error in field.errors %}
+    <span style="color:red;">{{error}}</span>
+    {% endfor %}
+    </span>
+    {% endfor %}
+    {% if registration_form.non_field_errors %}
+    <div style="color:red;">
+      <span>{{registration_form.non_field_errors}}</span>
+    </div>
+    {% endif %}
+    <div class="form__field">
+      <input type="submit" value="Sign up">
+    </div>
+  </form>
+  <p class="text--center">Already member? <a href="#">Sign in now</a> <svg class="icon">
+      <use xlink:href="#icon-arrow-right"></use>
+    </svg></p>
+
+</div>
+
+{% endblock content %}
